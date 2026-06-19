@@ -1,0 +1,12 @@
+# React Router SPA - Semua route diarahkan ke index.html
+# File ini otomatis ikut terbuild masuk ke dist/.htaccess
+
+Options -MultiViews
+RewriteEngine On
+
+# Jangan redirect file/folder yang benar-benar ada
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+
+# Semua request diarahkan ke index.html
+RewriteRule ^ index.html [QSA,L]
