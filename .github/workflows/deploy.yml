@@ -1,4 +1,4 @@
-name: 🚀 Auto Deploy - madin.staialmannan.ac.id
+name: 🚀 Auto Deploy - madin.lpialhidayah.or.id
 
 on:
   push:
@@ -8,7 +8,7 @@ on:
 
 jobs:
   deploy:
-    name: 🌐 Deploy ke madin.staialmannan.ac.id
+    name: 🌐 Deploy ke madin.lpialhidayah.or.id
     runs-on: ubuntu-latest
 
     steps:
@@ -35,7 +35,7 @@ jobs:
 
       # 5. Upload hasil build ke VPS via SCP
       #    public/.htaccess ikut terbuild masuk ke dist/
-      #    dist/* → /home/staialmannan/madin.staialmannan.ac.id/
+      #    dist/* → /home/staialmannan/madin.lpialhidayah.or.id/
       - name: 📤 Upload dist/ ke VPS
         uses: appleboy/scp-action@v0.1.7
         with:
@@ -44,7 +44,7 @@ jobs:
           key: ${{ secrets.MADIN_SECRET_KEY_SSH }}
           port: 22
           source: "dist/*"
-          target: "/home/staialmannan/madin.staialmannan.ac.id"
+          target: "/home/staialmannan/madin.lpialhidayah.or.id"
           strip_components: 1
 
       # 6. Graceful reload Apache agar file baru langsung aktif
@@ -56,16 +56,16 @@ jobs:
           key: ${{ secrets.MADIN_SECRET_KEY_SSH }}
           port: 22
           script: |
-            echo "✅ File berhasil diupload ke /home/staialmannan/madin.staialmannan.ac.id"
+            echo "✅ File berhasil diupload ke /home/staialmannan/madin.lpialhidayah.or.id"
             echo "♻️ Graceful reload Apache..."
             /usr/local/apps/apache2/bin/apachectl graceful
-            echo "🎉 https://madin.staialmannan.ac.id sudah terupdate!"
+            echo "🎉 https://madin.lpialhidayah.or.id sudah terupdate!"
 
       - name: ✅ Deploy Berhasil
         if: success()
         run: |
           echo "🎉 Deploy berhasil!"
-          echo "🌐 Cek: https://madin.staialmannan.ac.id"
+          echo "🌐 Cek: https://madin.lpialhidayah.or.id"
 
       - name: ❌ Deploy Gagal
         if: failure()
