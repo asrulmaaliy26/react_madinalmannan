@@ -41,7 +41,7 @@ jobs:
         with:
           host: ${{ secrets.VPS_HOST }}
           username: root
-          key: ${{ secrets.VPS_SSH_KEY }}
+          key: ${{ secrets.MADIN_SECRET_KEY_SSH }}
           port: 22
           source: "dist/*"
           target: "/home/staialmannan/madin.staialmannan.ac.id"
@@ -53,7 +53,7 @@ jobs:
         with:
           host: ${{ secrets.VPS_HOST }}
           username: root
-          key: ${{ secrets.VPS_SSH_KEY }}
+          key: ${{ secrets.MADIN_SECRET_KEY_SSH }}
           port: 22
           script: |
             echo "✅ File berhasil diupload ke /home/staialmannan/madin.staialmannan.ac.id"
