@@ -263,34 +263,26 @@ const About: React.FC = () => {
   const renderStruktur = () => {
     // Data Struktur Organisasi Madrasah Diniyah Al Hidayah
     const dewanPenasehat = [
-      "Moh. Taufiq Hidayatulloh, S. Pd. (Penanggung Jawab)",
-      "Hj. Awfa Nayli Fakhrina (Penasehat)"
+      "Agus. A'mal Sabda Tama (Penanggung Jawab)",
+      "KH. Ahmad Nasukhi (Penasehat)"
     ];
 
     const pimpinan = {
-      ketua: { role: "Kepala Lembaga / Ketua", name: "Hj. Ana Rahmi Husnawiyah, S.Pd.I" },
+      ketua: { role: "Kepala Madrasah", name: "Anma Muniri S. Hum." },
       sekretaris: [
-        { role: "Sekretaris 1", name: "Nabila Nurkumala Khusna" },
-        { role: "Sekretaris 2", name: "Ulfa Lailatul Fadhilah" }
+        { role: "Sekretaris", name: "Laila Hidayatil Muslikhah" }
       ],
       bendahara: [
-        { role: "Bendahara 1", name: "Bidayatun Ni'mah" },
-        { role: "Bendahara 2", name: "Ni'ma Ummu Abidah" }
+        { role: "Bendahara", name: "Nilna Muna" }
       ]
     };
 
     const lembaga = [
-      { role: "Waka Pengembangan", name: "Mei Rahayu Ningtias, M.Pd." },
-      { role: "Waka Pendidikan", name: "Siti Maslihatul Hasanah, Nur Afifah" },
-      { role: "Waka Kurikulum", name: "Rohmatul Fitria, Iqlima Chalawa" },
-      { role: "Waka Kesantrian", name: "Hanik Nur 'Aini, dkk" }
+      { role: "Waka Kurikulum", name: "Ishthifaul Ashfia" },
+      { role: "Waka Kesiswaan", name: "Ibnu Rofi' Ishomudin" }
     ];
 
-    const pengajar = [
-      { role: "Tenaga Pengajar", name: "Zidni Nuril Azka, S.Pd" },
-      { role: "Tenaga Pengajar", name: "Siti Nurjanah, S.Pd" },
-      { role: "Tenaga Pengajar", name: "Indana Zulfa, S.Pd" }
-    ];
+    const pengajar: { role: string; name: string }[] = [];
 
     return (
       <div className="space-y-24 animate-fadeIn text-center">
@@ -371,21 +363,23 @@ const About: React.FC = () => {
         </div>
 
         {/* Tenaga Pengajar */}
-        <div className="max-w-5xl mx-auto">
-          <h3 className="text-xl md:text-2xl font-black text-slate-800 mb-10">Sebagian Tenaga Pengajar</h3>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
-            {pengajar.map((item, idx) => (
-              <div key={idx} className="bg-white p-8 rounded-[2rem] shadow-xl border-t-4 border-islamic-green-500 relative overflow-hidden group hover:shadow-2xl transition-all duration-300">
-                <div className="absolute top-0 right-0 w-20 h-20 bg-islamic-green-500/5 rounded-bl-[3rem] -mr-4 -mt-4 transition-all group-hover:bg-islamic-green-500/10"></div>
-                <div className="mb-4">
-                  <GraduationCap className="w-8 h-8 text-islamic-green-600" />
+        {pengajar.length > 0 && (
+          <div className="max-w-5xl mx-auto">
+            <h3 className="text-xl md:text-2xl font-black text-slate-800 mb-10">Sebagian Tenaga Pengajar</h3>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
+              {pengajar.map((item, idx) => (
+                <div key={idx} className="bg-white p-8 rounded-[2rem] shadow-xl border-t-4 border-islamic-green-500 relative overflow-hidden group hover:shadow-2xl transition-all duration-300">
+                  <div className="absolute top-0 right-0 w-20 h-20 bg-islamic-green-500/5 rounded-bl-[3rem] -mr-4 -mt-4 transition-all group-hover:bg-islamic-green-500/10"></div>
+                  <div className="mb-4">
+                    <GraduationCap className="w-8 h-8 text-islamic-green-600" />
+                  </div>
+                  <p className="text-xs font-bold text-islamic-green-600 uppercase tracking-wider mb-3">{item.role}</p>
+                  <p className="font-black text-slate-800 leading-tight text-lg">{item.name}</p>
                 </div>
-                <p className="text-xs font-bold text-islamic-green-600 uppercase tracking-wider mb-3">{item.role}</p>
-                <p className="font-black text-slate-800 leading-tight text-lg">{item.name}</p>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
-        </div>
+        )}
       </div>
     );
   };
