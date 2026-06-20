@@ -80,6 +80,23 @@ export const getDefaultLevel = (): string => {
 export const fetchLevelConfig = async (): Promise<LevelConfigData> => {
     const data = await fetchJson<LevelConfigData>(`${API_BASE_URL}/jenjang`, 'Gagal mengambil konfigurasi jenjang');
     if (Object.keys(data).length === 0) throw new Error('Konfigurasi jenjang kosong');
+    
+    // Fallback: inject MADIN config if backend hasn't updated yet
+    if (!data['MADIN']) {
+        if (data['TPQ']) {
+            data['MADIN'] = { ...data['TPQ'], name: 'Madrasah Diniyah' };
+            // Optional: delete data['TPQ'] if we only want MADIN
+        } else {
+            data['MADIN'] = {
+                color: "islamic-green",
+                name: "Madrasah Diniyah",
+                bg: "bg-islamic-green-600",
+                text: "text-islamic-green-600",
+                type: "Madrasah Diniyah"
+            };
+        }
+    }
+    
     return data;
 };
 

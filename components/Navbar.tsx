@@ -54,7 +54,7 @@ const Navbar: React.FC = () => {
               <img src={import.meta.env.VITE_APP_LOGO} alt="Logo" className="w-10 h-10 object-contain rounded-full group-hover:rotate-6 transition-transform drop-shadow-md" />
               <div className="flex flex-col">
                 <span className="font-bold text-lg tracking-tight text-slate-900 leading-none">{currentTheme.name}</span>
-                <span className="text-[10px] font-bold text-slate-400 uppercase tracking-widest mt-1">Taman Pendidikan Al-Qur'an</span>
+                <span className="text-[10px] font-bold text-slate-400 uppercase tracking-widest mt-1">Madrasah Diniyah</span>
               </div>
             </Link>
 
@@ -128,7 +128,7 @@ const Navbar: React.FC = () => {
             </Link>
 
             <a
-              href="https://pmb.tpqalhidayah.ac.id"
+              href="https://pmb.madin.lpialhidayah.or.id"
               target="_blank"
               rel="noopener noreferrer"
               className={`${currentTheme.bg} ml-4 text-white px-6 py-3 rounded-full font-bold text-sm hover:brightness-110 transition-all shadow-lg`}
@@ -213,7 +213,7 @@ const Navbar: React.FC = () => {
           </Link>
 
           <a
-            href="https://pmb.tpqalhidayah.ac.id"
+            href="https://pmb.madin.lpialhidayah.or.id"
             target="_blank"
             rel="noopener noreferrer"
             className={`block px-4 py-3 text-center text-sm font-black rounded-xl ${currentTheme.bg} text-white shadow-lg`}

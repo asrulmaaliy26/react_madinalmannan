@@ -29,15 +29,14 @@ const About: React.FC = () => {
         const envMisiStr = import.meta.env.VITE_ABOUT_MISI;
         const envStrukturStr = import.meta.env.VITE_ABOUT_STRUKTUR;
 
-        const TPQ_MISI_DEFAULT = [
-          "Menyelenggarakan pendidikan Al-Qur'an yang berkualitas dengan metode yang efektif dan menyenangkan bagi anak-anak.",
-          "Menanamkan nilai-nilai keislaman dan akhlakul karimah sesuai ajaran Al-Qur'an dan As-Sunnah.",
-          "Mengembangkan potensi santri secara holistik, meliputi aspek spiritual, intelektual, emosional, dan sosial.",
-          "Membentuk karakter santri yang berpegang teguh pada syariat Islam, memiliki rasa tanggung jawab, disiplin, dan kepedulian sosial.",
-          "Menciptakan lingkungan belajar yang kondusif, aman, nyaman, dan penuh motivasi untuk mengembangkan kecintaan terhadap Al-Qur'an.",
+        const MADIN_MISI_DEFAULT = [
+          "Membekali santri dalam ilmu agama ala Ahlussunnah Wal Jama'ah",
+          "Menanamkan nilai-nilai syariah dalam kehidupan sehari-hari",
+          "Mendidik dan membimbing santri dalam mengimplementasikan Al Qur'an dan Sunnah",
+          "Mencetak generasi muda yang cerdas, moderat, intelektual, berwawasan islami, dan berakhlak qur'ani",
         ];
 
-        let misi: string[] = TPQ_MISI_DEFAULT;
+        let misi: string[] = MADIN_MISI_DEFAULT;
         try {
           if (envMisiStr) {
             const parsed = JSON.parse(envMisiStr);
@@ -176,10 +175,10 @@ const About: React.FC = () => {
 
   const renderProfil = () => {
     const identitas = [
-      { label: 'Nama Lembaga', value: 'TPQ Al-Hidayah', icon: <Building className="w-5 h-5" /> },
+      { label: 'Nama Lembaga', value: 'Madrasah Diniyah Al-Hidayah', icon: <Building className="w-5 h-5" /> },
       { label: 'Kepala Lembaga', value: 'Hj. Ana Rahmi Husnawiyah, S.Pd.I', icon: <User className="w-5 h-5" /> },
       { label: 'Berdiri Sejak', value: '17 Juli 2018', icon: <Calendar className="w-5 h-5" /> },
-      { label: 'Jenis Pendidikan', value: 'TPQ (Taman Pendidikan Al-Qur\'an)', icon: <BookMarked className="w-5 h-5" /> },
+      { label: 'Jenis Pendidikan', value: 'Madrasah Diniyah Takmiliyah Awwaliyah (MDTA)', icon: <BookMarked className="w-5 h-5" /> },
       { label: 'Nomor Telepon', value: '085607224505', icon: <Phone className="w-5 h-5" /> },
       { label: 'Alamat', value: "Jl. KH. Hasyim Asy'ari 52 Gg 3, RT 02/02, Desa Kauman, Kec. Kauman, Kab. Tulungagung", icon: <MapPin className="w-5 h-5" /> },
     ];
@@ -204,16 +203,16 @@ const About: React.FC = () => {
               Mencetak Generasi <span className={theme.text}>Qur'ani</span> Sejak Usia Dini
             </h2>
             <div className="space-y-5 text-slate-600 leading-relaxed text-base md:text-lg">
-              <p>TPQ Al-Hidayah secara resmi mulai beroperasi pada <strong className="text-slate-800">17 Juli 2018</strong>, di bawah naungan Yayasan Al-Mannan Kauman. Pendirian ini merupakan langkah lanjutan setelah mapannya kegiatan di Pondok Pesantren Al-Mannan, dengan fokus pada intervensi pendidikan sejak usia prasekolah dan sekolah dasar.</p>
-              <p>Latar belakang utama yang mendorong berdirinya TPQ ini adalah keprihatinan terhadap pergeseran nilai di era modern. Para pendiri memiliki keinginan luhur untuk menanamkan kecintaan terhadap Al-Qur'an bukan sekadar sebagai subjek pelajaran, melainkan sebagai <strong className="text-slate-800">pedoman hidup (way of life)</strong>.</p>
-              <p>Melalui program tahfidz yang dirancang secara bertahap, TPQ Al-Hidayah diproyeksikan menjadi <strong className="text-slate-800">"laboratorium spiritual"</strong> pertama bagi anak-anak di lingkungan Kauman — membentuk benteng spiritual yang kokoh agar para santri memiliki imunitas moral dalam menghadapi perkembangan zaman yang semakin kompleks.</p>
+              <p>Madrasah Diniyah Takmiliyah Awwaliyah (MDTA) Al-Hidayah secara resmi beroperasi di bawah naungan Yayasan Pondok Pesantren Al Mannan Kauman. Pendirian ini merupakan langkah lanjutan setelah mapannya kegiatan di Pondok Pesantren Al-Mannan, dengan fokus pada intervensi pendidikan sejak usia prasekolah dan sekolah dasar.</p>
+              <p>Latar belakang utama yang mendorong berdirinya Madrasah Diniyah ini adalah keprihatinan terhadap pergeseran nilai di era modern. Para pendiri memiliki keinginan luhur untuk menanamkan pemahaman syariah bukan sekadar sebagai subjek pelajaran, melainkan sebagai <strong className="text-slate-800">pedoman hidup (way of life)</strong>.</p>
+              <p>Melalui program pembelajaran yang dirancang secara bertahap, MDTA Al-Hidayah diproyeksikan menjadi <strong className="text-slate-800">"laboratorium spiritual"</strong> pertama bagi generasi muda di lingkungan Kauman — membentuk benteng spiritual yang kokoh agar para santri memiliki imunitas moral dalam menghadapi perkembangan zaman yang semakin kompleks.</p>
             </div>
           </div>
           <div className="lg:w-2/5 relative w-full">
             <div className="rounded-[2.5rem] overflow-hidden shadow-2xl border-[8px] border-white relative z-10">
               <img
                 src={import.meta.env.VITE_ABOUT_IMAGE}
-                alt="Gedung TPQ Al-Hidayah"
+                alt="Gedung Madrasah Diniyah Al-Hidayah"
                 className="w-full h-full object-cover min-h-[300px] md:min-h-[400px]"
               />
             </div>
@@ -262,7 +261,7 @@ const About: React.FC = () => {
   };
 
   const renderStruktur = () => {
-    // Data Struktur Organisasi TPQ Al Hidayah
+    // Data Struktur Organisasi Madrasah Diniyah Al Hidayah
     const dewanPenasehat = [
       "Moh. Taufiq Hidayatulloh, S. Pd. (Penanggung Jawab)",
       "Hj. Awfa Nayli Fakhrina (Penasehat)"
