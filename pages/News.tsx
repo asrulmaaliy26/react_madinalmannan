@@ -15,7 +15,6 @@ const News: React.FC = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [activeCategory, setActiveCategory] = useState<string>("Semua");
 
-  // Init data from cache
   const [categories, setCategories] = useState<string[]>(
     homeCache.newsCategories && homeCache.newsCategories.length > 0
       ? homeCache.newsCategories
@@ -31,7 +30,7 @@ const News: React.FC = () => {
   const [newsLoading, setNewsLoading] = useState(!homeCache.isNewsLoaded);
 
   const [limit, setLimit] = useState(homeCache.allNews?.length || 6);
-  const [hasMore, setHasMore] = useState(true);
+  const [hasMore, setHasMore] = useState(homeCache.hasMoreNews ?? true);
 
   const { activeLevel } = useContext(LevelContext);
   const LEVEL_CONFIG = useLevelConfig();
@@ -58,7 +57,7 @@ const News: React.FC = () => {
   // News Data Load (with limit)
   useEffect(() => {
     // If loaded from cache and we have enough data for current limit, skip fetch
-    if (homeCache.isNewsLoaded && news.length >= limit) {
+    if (homeCache.isNewsLoaded && (news.length >= limit || !homeCache.hasMoreNews)) {
       setNewsLoading(false);
       return;
     }
@@ -68,13 +67,13 @@ const News: React.FC = () => {
       try {
         const newsData = await fetchNewsWithLimit(limit);
         setNews(newsData);
-        setHomeCache({ allNews: newsData, isNewsLoaded: true });
-
         // If we received fewer items than requested limit, we've reached the end
         if (newsData.length < limit) {
           setHasMore(false);
+          setHomeCache({ allNews: newsData, isNewsLoaded: true, hasMoreNews: false });
         } else {
           setHasMore(true);
+          setHomeCache({ allNews: newsData, isNewsLoaded: true, hasMoreNews: true });
         }
       } catch (error) {
         console.error("Error loading news:", error);
@@ -92,8 +91,8 @@ const News: React.FC = () => {
         n.excerpt.toLowerCase().includes(searchTerm.toLowerCase());
       // Normalize jenjang to uppercase for case-insensitive comparison
       const normalizedJenjang = n.jenjang?.toUpperCase() || "";
-      // Show news ONLY for activeLevel
-      const matchesLevel = normalizedJenjang === activeLevel;
+      // Show news ONLY for activeLevel or UMUM
+      const matchesLevel = normalizedJenjang === activeLevel || normalizedJenjang === "UMUM";
       const matchesCategory =
         activeCategory === "Semua" ? true : n.category === activeCategory;
 
@@ -117,8 +116,8 @@ const News: React.FC = () => {
     return [...news]
       .filter((n) => {
         const normalizedJenjang = n.jenjang?.toUpperCase() || "";
-        // Show news ONLY if it matches activeLevel
-        return normalizedJenjang === activeLevel;
+        // Show news ONLY if it matches activeLevel or UMUM
+        return normalizedJenjang === activeLevel || normalizedJenjang === "UMUM";
       })
       .sort((a, b) => b.views - a.views)
       .slice(0, 4);
@@ -202,6 +201,8 @@ const News: React.FC = () => {
                   ))
                 )}
               </div>
+
+
             </div>
           </header>
           <div className="space-y-10">
