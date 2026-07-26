@@ -250,7 +250,7 @@ const EditNews: React.FC = () => {
           <section className="bg-white p-10 rounded-[3rem] shadow-sm border border-slate-100">
             <div className="space-y-8">
               <div>
-                <label className="text-xs font-black text-slate-400 uppercase tracking-widest block mb-4">Judul Artikel</label>
+                <label className="text-xs font-black text-slate-400 uppercase tracking-widest block mb-4">Judul Artikel <span className="text-red-500 text-sm">*</span></label>
                 <input type="text" className="w-full px-6 py-4 bg-slate-50 border border-slate-100 rounded-2xl font-bold text-xl" value={title} onChange={(e) => setTitle(e.target.value)} />
               </div>
 
@@ -482,7 +482,7 @@ const EditNews: React.FC = () => {
               </div>
 
               <div>
-                <label className="text-xs font-black text-slate-400 uppercase tracking-widest block mb-4">Konten Berita</label>
+                <label className="text-xs font-black text-slate-400 uppercase tracking-widest block mb-4">Konten Berita <span className="text-red-500 text-sm">*</span></label>
                 <div className="bg-slate-50 border border-slate-100 rounded-[2.5rem] overflow-hidden">
                   <ReactQuill
                     theme="snow"

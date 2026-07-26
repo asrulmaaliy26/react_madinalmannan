@@ -212,7 +212,7 @@ const CreateNews: React.FC = () => {
             <div className="space-y-8">
               <div>
                 <label className="flex items-center gap-2 text-xs font-black text-slate-400 uppercase tracking-widest mb-4">
-                  <Tag className="w-4 h-4 text-slate-400" /> Judul Artikel
+                  <Tag className="w-4 h-4 text-slate-400" /> Judul Artikel <span className="text-red-500 text-sm">*</span>
                 </label>
                 <input
                   type="text"
@@ -432,7 +432,7 @@ const CreateNews: React.FC = () => {
 
               <div>
                 <label className="flex items-center gap-2 text-xs font-black text-slate-400 uppercase tracking-widest mb-4">
-                  <AlignLeft className="w-4 h-4" /> Konten Berita
+                  <AlignLeft className="w-4 h-4" /> Konten Berita <span className="text-red-500 text-sm">*</span>
                 </label>
                 <div className="bg-slate-50 border border-slate-100 rounded-[2.5rem] overflow-hidden">
                   <ReactQuill
